@@ -1,17 +1,19 @@
-package com.naman.questionbank.feed
+package com.naman.questionbank.feed.adapters
 
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.naman.questionbank.ui.QuestionBankInteractions
 import com.naman.questionbank.ui.snippetData.ExamCategoryCardData
 import com.naman.questionbank.ui.snippets.ExamCategoryCardSnippet
 
-class FeedAdapter(private val examList: List<ExamCategoryCardData>, private val context: Context) :
+class FeedAdapter(private val examList: List<ExamCategoryCardData>,
+                  private val context: Context) :
     RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = ExamCategoryCardSnippet(context)
+        val view = ExamCategoryCardSnippet(context, QuestionBankInteractions(context))
         return ViewHolder(view)
     }
 

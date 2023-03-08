@@ -1,0 +1,174 @@
+<resources>
+
+    <dimen name="toolbar_elevation">0.0f</dimen>
+    <dimen name="elevation_0.5">0.5dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+    <dimen name="elevation_regular">4dp</dimen>
+    <dimen name="elevation_big">6dp</dimen>
+    <dimen name="elevation_huge">10dp</dimen>
+    <dimen name="qd_bottom_cart_strip_height">64dp</dimen>
+    <dimen name="qd_bottom_cart_plp_offset">62dp</dimen>
+    <dimen name="qd_bottom_cart_plp_negative_offset">-62dp</dimen>
+    <dimen name="qd_information_strip_negative_offset">-40dp</dimen>
+
+
+    <item name="qd_item_screen_image_text_type_product_card" format="float" type="dimen">2</item>
+    <item name="qd_item_screen_image_text_type_small_product_card" format="float" type="dimen">3.5
+    </item>
+    <item name="qd_item_screen_image_text_type_category_card" format="float" type="dimen">1</item>
+    <item name="qd_item_screen_image_text_type_grid_category_card" format="float" type="dimen">2
+    </item>
+    <item name="qd_item_screen_image_text_type_category_grid" format="float" type="dimen">4</item>
+
+    <dimen name="qd_category_side_section_width">76dp</dimen>
+
+    <dimen name="plp_pull_switch_height">130dp</dimen>
+
+    <!--Margins-->
+    <dimen name="qd_margin_0">0dp</dimen>
+    <dimen name="qd_margin_0.5">0.5dp</dimen>
+    <dimen name="qd_margin_2">2dp</dimen>
+    <dimen name="qd_margin_3">3dp</dimen>
+    <dimen name="qd_margin_4">4dp</dimen>
+    <dimen name="qd_margin_5">5dp</dimen>
+    <dimen name="qd_margin_6">6dp</dimen>
+    <dimen name="qd_margin_7">7dp</dimen>
+    <dimen name="qd_margin_8">8dp</dimen>
+    <dimen name="qd_margin_9">9dp</dimen>
+    <dimen name="qd_margin_10">10dp</dimen>
+    <dimen name="qd_margin_12">12dp</dimen>
+    <dimen name="qd_margin_14">14dp</dimen>
+    <dimen name="qd_margin_16">16dp</dimen>
+    <dimen name="qd_margin_18">18dp</dimen>
+    <dimen name="qd_margin_20">20dp</dimen>
+    <dimen name="qd_margin_22">22dp</dimen>
+    <dimen name="qd_margin_24">24dp</dimen>
+    <dimen name="qd_margin_26">26dp</dimen>
+    <dimen name="qd_margin_28">28dp</dimen>
+    <dimen name="qd_margin_32">32dp</dimen>
+    <dimen name="qd_margin_40">40dp</dimen>
+    <dimen name="qd_margin_54">54dp</dimen>
+    <dimen name="qd_margin_56">56dp</dimen>
+    <dimen name="qd_margin_60">60dp</dimen>
+
+    <!--Padding-->
+    <dimen name="qd_padding_0">0dp</dimen>
+    <dimen name="qd_padding_0.5">0.5dp</dimen>
+    <dimen name="qd_padding_1">1dp</dimen>
+    <dimen name="qd_padding_2">2dp</dimen>
+    <dimen name="qd_padding_3">3dp</dimen>
+    <dimen name="qd_padding_4">4dp</dimen>
+    <dimen name="qd_padding_5">5dp</dimen>
+    <dimen name="qd_padding_6">6dp</dimen>
+    <dimen name="qd_padding_7">7dp</dimen>
+    <dimen name="qd_padding_8">8dp</dimen>
+    <dimen name="qd_padding_9">9dp</dimen>
+    <dimen name="qd_padding_10">10dp</dimen>
+    <dimen name="qd_padding_12">12dp</dimen>
+    <dimen name="qd_padding_14">14dp</dimen>
+    <dimen name="qd_padding_16">16dp</dimen>
+    <dimen name="qd_padding_18">18dp</dimen>
+    <dimen name="qd_padding_20">20dp</dimen>
+    <dimen name="qd_padding_24">24dp</dimen>
+    <dimen name="qd_padding_32">32dp</dimen>
+    <dimen name="qd_padding_40">40dp</dimen>
+
+    <!-- Global values -->
+    <dimen name="keyboard_height">340dp</dimen>
+    <dimen name="divider_view_height">0.5dp</dimen>
+
+    <!--Font-->
+    <dimen name="font_size_femto">8sp</dimen>
+    <dimen name="font_size_tiny">12sp</dimen>
+    <dimen name="font_size_small">13sp</dimen>
+    <dimen name="font_size_mini">14sp</dimen>
+    <dimen name="font_size_medium">15sp</dimen>
+    <dimen name="font_size_xmedium">16sp</dimen>
+    <dimen name="font_size_large">18sp</dimen>
+    <dimen name="font_size_xxlarge">21sp</dimen>
+
+    <!--Font Icon-->
+    <dimen name="font_icon_size_5">5sp</dimen>
+    <dimen name="font_icon_size_10">10sp</dimen>
+    <dimen name="font_icon_size_12">12sp</dimen>
+    <dimen name="font_icon_size_13">13sp</dimen>
+    <dimen name="font_icon_size_15">15sp</dimen>
+    <dimen name="font_icon_size_16">16sp</dimen>
+    <dimen name="font_icon_size_18">18sp</dimen>
+    <dimen name="font_icon_size_20">20sp</dimen>
+    <dimen name="font_icon_size_22">22sp</dimen>
+    <dimen name="font_icon_size_24">24sp</dimen>
+    <dimen name="font_icon_size_36">36sp</dimen>
+    <dimen name="font_icon_size_48">48sp</dimen>
+
+    <!--dimen-->
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">280dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">@dimen/qd_margin_16</dimen>
+    <dimen name="activity_vertical_margin">@dimen/qd_margin_16</dimen>
+
+    <!-- Custom View Heights -->
+    <dimen name="action_bar_size">56dp</dimen>
+    <dimen name="no_resource_image_size_small">144dp</dimen>
+
+    <dimen name="demarcation_shadow_depth_neg">-3dp</dimen>
+
+    <dimen name="radius_2dp">2dp</dimen>
+    <dimen name="radius_4dp">4dp</dimen>
+    <dimen name="radius_8dp">8dp</dimen>
+    <dimen name="radius_12dp">12dp</dimen>
+    <dimen name="radius_16dp">16dp</dimen>
+    <dimen name="poi_tooltip_top_margin">-6.5dp</dimen>
+    <dimen name="crystal_toolbar_height">58dp</dimen>
+
+    <!--GPS Prompt -->
+
+    <!-- Loader Icon -->
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="nitro_vertical_padding_6">6dp</dimen>
+    <dimen name="nitro_vertical_padding_4">4dp</dimen>
+
+    <!-- Seekbar -->
+    <dimen name="zexoseekbar_height">3dp</dimen>
+    <dimen name="zexoseekbar_scrubber_small_size">8dp</dimen>
+    <dimen name="zexoseekbar_scrubber_big_size">12dp</dimen>
+
+    <!-- ********* home restaurant item ******* -->
+    <dimen name="restaurant_image_small_width">70dp</dimen>
+
+    <dimen name="menu_new_grid_item_image_width">80dp</dimen>
+    <dimen name="menu_new_grid_item_image_height">80dp</dimen>
+    <dimen name="menu_grid_item_image_width_new">120dp</dimen>
+    <dimen name="menu_grid_item_image_height_new">100dp</dimen>
+    <dimen name="expanded_image_menu_item_new">148dp</dimen>
+    <dimen name="expanded_image_menu_item">180dp</dimen>
+
+    <dimen name="qd_btype_212_image_height">200dp</dimen>
+    <dimen name="qd_btype_212_image_width">188dp</dimen>
+    <dimen name="sushi_spacing_page_side">12dp</dimen>
+    <dimen name="sushi_spacing_macro">8dp</dimen>
+
+    <!--  Shimmer  -->
+    <dimen name="qd_shimmer_2">2dp</dimen>
+    <dimen name="qd_shimmer_10">10dp</dimen>
+    <dimen name="qd_shimmer_14">14dp</dimen>
+    <dimen name="qd_shimmer_78">78dp</dimen>
+    <dimen name="qd_shimmer_126">126dp</dimen>
+
+    <dimen name="qd_list_fab_list_width">240dp</dimen>
+    <dimen name="qd_list_fab_list_max_height">392dp</dimen>
+    <dimen name="qd_list_fab_height">36dp</dimen>
+    <dimen name="qd_list_fab_width">84dp</dimen>
+    <dimen name="qd_list_fab_corner_radius">66dp</dimen>
+
+    <dimen name="qd_size_66">66dp</dimen>
+    <dimen name="qd_size_76">76dp</dimen>
+    <dimen name="qd_size_130">130dp</dimen>
+    <dimen name="qd_size_156">156dp</dimen>
+</resources>

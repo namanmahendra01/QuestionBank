@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.naman.questionbank.base.fragment.ViewBindingFragment
 import com.naman.questionbank.databinding.FragmentFeedBinding
-import com.naman.questionbank.feed.FeedAdapter
-import com.naman.questionbank.feed.FeedViewModel
+import com.naman.questionbank.feed.adapters.FeedAdapter
+import com.naman.questionbank.feed.viewmodels.FeedViewModel
 
-class FeedFragment : ViewBindingFragment<FragmentFeedBinding>(){
+class FeedFragment : ViewBindingFragment<FragmentFeedBinding>() {
 
     companion object {
         @JvmStatic

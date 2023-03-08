@@ -4,13 +4,14 @@
 
     <application
         android:allowBackup="true"
+        android:name="com.naman.questionbank.ApplicationClass"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuestionBank"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
             android:name=".feed.views.FeedActivity"
             android:exported="true">
