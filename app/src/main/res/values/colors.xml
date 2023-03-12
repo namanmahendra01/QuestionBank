@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="app_theme">#52BFFF</color>
+    <color name="sushi_grey_100">#ECEEF3</color>
+    <color name="sushi_white">#FFFFFF</color>
+    <color name="app_secondary_theme">#5271FF</color>
+    <color name="opaque_bg_color">#99000000</color>
+
+
 </resources>

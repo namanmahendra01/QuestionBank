@@ -15,7 +15,7 @@ class OptionsAdapter(
     RecyclerView.Adapter<OptionsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = SpinnerSnippet(context, QuestionBankInteractions(context))
+        val view = SpinnerSnippet(context, interaction = QuestionBankInteractions(context))
         return ViewHolder(view)
     }
 

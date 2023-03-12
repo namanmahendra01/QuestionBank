@@ -2,13 +2,19 @@ package com.naman.questionbank.feed.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.naman.questionbank.QuestionBankObject
+import com.naman.questionbank.base.ActionType
 import com.naman.questionbank.base.fragment.ViewBindingFragment
 import com.naman.questionbank.databinding.FragmentFeedBinding
 import com.naman.questionbank.feed.adapters.FeedAdapter
+import com.naman.questionbank.pdfviewer.adapters.PdfListAdapter
 import com.naman.questionbank.feed.viewmodels.FeedViewModel
+import kotlinx.coroutines.launch
 
 class FeedFragment : ViewBindingFragment<FragmentFeedBinding>() {
 
@@ -42,6 +48,16 @@ class FeedFragment : ViewBindingFragment<FragmentFeedBinding>() {
                 it,
                 requireContext()
             )
+        }
+        lifecycleScope.launch {
+            QuestionBankObject.actionPerformerSharedFlow.collect { envelope ->
+                when (envelope.action) {
+                    ActionType.CLOSE_PROGRESS_BAR->{
+                         binding.progressBar.visibility = View.GONE
+                    }
+                    else -> {}
+                }
+            }
         }
     }
 

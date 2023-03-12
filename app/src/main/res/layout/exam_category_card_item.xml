@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:id="@+id/card_container"
+    android:layout_gravity="center"
+    app:cardElevation="@dimen/qd_margin_5"
+   app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="@dimen/radius_12dp"
+    app:cardBackgroundColor="@color/white"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout

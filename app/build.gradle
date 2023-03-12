@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.naman.questionbank"
-        minSdk 24
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -59,4 +59,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.15.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
+
+    //PRPDownloader
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
 }

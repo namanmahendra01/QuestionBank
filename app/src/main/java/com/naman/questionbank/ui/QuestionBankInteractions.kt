@@ -1,19 +1,21 @@
 package com.naman.questionbank.ui
 
 import android.content.Context
-import android.util.Log
 import com.naman.questionbank.QuestionBankObject.actionPerformerSharedFlow
 import com.naman.questionbank.base.ActionType
 import com.naman.questionbank.base.Envelope
 import com.naman.questionbank.feed.views.OptionsFragment
 import com.naman.questionbank.ui.snippetData.ExamCategoryCardData
 import com.naman.questionbank.ui.snippets.ExamCategoryCardSnippet
+import com.naman.questionbank.ui.snippets.PdfItemSnippet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class QuestionBankInteractions(context: Context?) :
-    ExamCategoryCardSnippet.IExamCategoryInteraction, OptionsFragment.OptionFragmentInteraction {
+    ExamCategoryCardSnippet.IExamCategoryInteraction, OptionsFragment.OptionFragmentInteraction,
+    PdfItemSnippet.PdfItemInteraction {
     private var context: Context? = null
 
     init {
@@ -21,19 +23,37 @@ class QuestionBankInteractions(context: Context?) :
     }
 
     override fun onExamCategoryClicked(examCategoryCardData: ExamCategoryCardData?) {
-        CoroutineScope(Dispatchers.IO).launch {
-            actionPerformerSharedFlow.emit(
-                Envelope(
-                    ActionType.OPEN_OPTION_FRAGMENT,
-                    examCategoryCardData
-                )
+        sendActionPerformerEvent(
+            Envelope(
+                ActionType.OPEN_OPTION_FRAGMENT,
+                examCategoryCardData
             )
-
-        }
-
+        )
     }
 
     override fun onFindButtonClicked(queryList: List<String>) {
-        Log.d("naman", "onFindButtonClicked:$queryList ")
+        sendActionPerformerEvent(
+            Envelope(
+                ActionType.OPEN_PDF_ACTIVITY,
+                queryList
+            )
+        )
+
+    }
+    override fun onPdfItemClicked(fileName: String?) {
+        sendActionPerformerEvent(
+            Envelope(
+                ActionType.OPEN_PDF_VIEWER_FRAGMENT,
+                fileName
+            )
+        )
+    }
+
+    private fun sendActionPerformerEvent(envelope: Envelope) {
+        GlobalScope.launch(Dispatchers.Default) {
+            actionPerformerSharedFlow.emit(
+                envelope
+            )
+        }
     }
 }

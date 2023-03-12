@@ -6,40 +6,34 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
 import com.naman.questionbank.QuestionBankObject.examCategoriesDbRef
+import com.naman.questionbank.QuestionBankObject.pdfReference
 import com.naman.questionbank.base.ExamType
 import com.naman.questionbank.ui.snippetData.ExamCategoryCardData
+import com.naman.questionbank.ui.snippetData.PdfItemData
 import com.naman.questionbank.ui.snippetData.SpinnerData
-import kotlin.math.log
 
 
 class FeedRepository {
-    private var examCategoryCardDataListener: IFirebaseValueCallback? = null
+    private var firebaseValueCallback: IFirebaseValueCallback? = null
 
     companion object {
         private var examCategoryCardDataList: List<ExamCategoryCardData>? = null
     }
 
     fun getExamCategoryList() {
-        Log.d("naman", "    fun getExamCategoryList() ")
-
         examCategoriesDbRef?.ref?.addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val examType = object : GenericTypeIndicator<List<ExamCategoryCardData>>() {}
                 examCategoryCardDataList = dataSnapshot.getValue(examType)
-                examCategoryCardDataListener?.onExamCategoryDataReceived(examCategoryCardDataList)
-                Log.d("naman", "onDataChange: $examCategoryCardDataList")
-
+                firebaseValueCallback?.onExamCategoryDataReceived(examCategoryCardDataList)
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("naman", "onCancelled: $error ")
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 
     fun setRepoListener(examCategoryCardDataListener: IFirebaseValueCallback) {
-        this.examCategoryCardDataListener = examCategoryCardDataListener
+        this.firebaseValueCallback = examCategoryCardDataListener
     }
 
     fun getOptionsForExam(examType: ExamType): List<SpinnerData>? {
@@ -47,5 +41,24 @@ class FeedRepository {
             examCategoryCardData.id == examType.name
         }
         return list?.options
+    }
+
+    fun getPdfList(path: String) {
+        val pdfReference = pdfReference?.child(path)
+        val pdfItems: MutableList<PdfItemData> = mutableListOf()
+
+        pdfReference?.listAll()?.addOnSuccessListener {
+            it.items.forEach { ref ->
+                pdfItems.add(PdfItemData(title = ref.name))
+            }
+            firebaseValueCallback?.onPdfListFetched(pdfItems as? List<PdfItemData> ?: listOf())
+        }
+    }
+
+    fun getPdfUrl(path: String) {
+        val pdfReference = pdfReference?.child(path)
+        pdfReference?.downloadUrl?.addOnSuccessListener {
+            firebaseValueCallback?.onDownloadUrlFetched(it.toString())
+        }
     }
 }

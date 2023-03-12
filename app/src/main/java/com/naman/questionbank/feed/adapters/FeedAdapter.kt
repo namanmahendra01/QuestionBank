@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.naman.questionbank.pdfviewer.adapters.PdfListAdapter
 import com.naman.questionbank.ui.QuestionBankInteractions
 import com.naman.questionbank.ui.snippetData.ExamCategoryCardData
 import com.naman.questionbank.ui.snippets.ExamCategoryCardSnippet

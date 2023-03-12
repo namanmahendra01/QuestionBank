@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Spinner
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naman.questionbank.base.ExamType
 import com.naman.questionbank.base.fragment.ViewBindingFragment
+import com.naman.questionbank.constants.PREV_QUERY_PATH
+import com.naman.questionbank.constants.QUERY_PATH
 import com.naman.questionbank.databinding.FragmentOptionSelectionBinding
 import com.naman.questionbank.feed.adapters.OptionsAdapter
 import com.naman.questionbank.feed.viewmodels.OptionsViewModel
@@ -52,7 +55,7 @@ class OptionsFragment : ViewBindingFragment<FragmentOptionSelectionBinding>(){
 
     private fun setListeners() {
         binding.findBtn.setOnClickListener {
-            val queryList = mutableListOf<String>()
+            val queryList = mutableListOf(arguments?.getString(PREV_QUERY_PATH,"") ?: "")
             binding.optionRv.forEach {
                 val spinner = it as? SpinnerSnippet
                 for (view in spinner?.children ?: return@forEach){
@@ -60,8 +63,8 @@ class OptionsFragment : ViewBindingFragment<FragmentOptionSelectionBinding>(){
                         is ConstraintLayout-> {
                             for (view2 in view.children) {
                                 when (view2) {
-                                    is AppCompatSpinner -> {
-                                        queryList.add(view2.selectedItem.toString())
+                                    is LinearLayout -> {
+                                        queryList.add((view2.getChildAt(1) as? AppCompatSpinner)?.selectedItem.toString())
                                     }
                                 }
                             }

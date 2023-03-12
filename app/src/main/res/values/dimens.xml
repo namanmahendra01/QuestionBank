@@ -10,6 +10,7 @@
     <dimen name="qd_bottom_cart_plp_offset">62dp</dimen>
     <dimen name="qd_bottom_cart_plp_negative_offset">-62dp</dimen>
     <dimen name="qd_information_strip_negative_offset">-40dp</dimen>
+    <dimen name="sushi_spacing_micro">4dp</dimen>
 
 
     <item name="qd_item_screen_image_text_type_product_card" format="float" type="dimen">2</item>
