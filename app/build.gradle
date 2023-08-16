@@ -12,8 +12,8 @@ android {
         applicationId "com.naman.questionbank"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 20000
+        versionName "20.00.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,7 +24,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -62,4 +63,7 @@ dependencies {
 
     //PRPDownloader
     implementation 'com.mindorks.android:prdownloader:0.6.0'
+
+    //Razorpay
+    implementation 'com.razorpay:checkout:1.6.26'
 }

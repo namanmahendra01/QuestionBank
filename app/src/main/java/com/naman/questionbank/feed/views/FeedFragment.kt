@@ -12,8 +12,8 @@ import com.naman.questionbank.base.ActionType
 import com.naman.questionbank.base.fragment.ViewBindingFragment
 import com.naman.questionbank.databinding.FragmentFeedBinding
 import com.naman.questionbank.feed.adapters.FeedAdapter
-import com.naman.questionbank.pdfviewer.adapters.PdfListAdapter
 import com.naman.questionbank.feed.viewmodels.FeedViewModel
+import com.naman.questionbank.payment.UserDetailsModel
 import kotlinx.coroutines.launch
 
 class FeedFragment : ViewBindingFragment<FragmentFeedBinding>() {
@@ -33,9 +33,14 @@ class FeedFragment : ViewBindingFragment<FragmentFeedBinding>() {
 
     override fun setup() {
         viewModel = ViewModelProvider(this)[FeedViewModel::class.java]
+        storeDeviceId()
         setupRv()
         setObservers()
         init()
+    }
+
+    private fun storeDeviceId() {
+            viewModel?.storeDeviceId(UserDetailsModel(uid = QuestionBankObject.uid))
     }
 
     private fun init() {

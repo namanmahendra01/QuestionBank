@@ -10,9 +10,9 @@ import com.naman.questionbank.base.ActionType
 import com.naman.questionbank.base.Envelope
 import com.naman.questionbank.feed.repository.FeedRepository
 import com.naman.questionbank.feed.repository.IFirebaseValueCallback
+import com.naman.questionbank.payment.UserDetailsModel
 import com.naman.questionbank.ui.snippetData.ExamCategoryCardData
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class FeedViewModel : ViewModel(), IFirebaseValueCallback {
@@ -44,5 +44,9 @@ class FeedViewModel : ViewModel(), IFirebaseValueCallback {
             Log.d("Naman", "onExamCategoryDataReceived: ")
             _examCategoryList.postValue(it)
         }
+    }
+
+    fun storeDeviceId(userDetailsModel: UserDetailsModel) {
+        repository.addPaymentModel(userDetailsModel)
     }
 }

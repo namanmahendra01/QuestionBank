@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="DASHBOARD"
-        android:padding="@dimen/dimen_16"
+        android:padding="@dimen/qd_margin_10"
         android:layout_marginTop="@dimen/dimen_16"
         android:textColor="@color/sushi_white"
-        android:textSize="28sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +23,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/feed_rv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/qd_margin_5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/qd_margin_40"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/heading" />
 

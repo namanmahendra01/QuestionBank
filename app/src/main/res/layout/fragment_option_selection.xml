@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/opaque_bg_color"
-    tools:context=".feed.views.OptionsFragment">
+    android:clickable="true"
+    tools:context=".feed.views.OptionsFragment"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"

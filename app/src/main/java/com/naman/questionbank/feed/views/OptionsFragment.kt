@@ -78,7 +78,7 @@ class OptionsFragment : ViewBindingFragment<FragmentOptionSelectionBinding>(){
     }
 
     private fun getExamOptions() {
-        viewModel?.getExamOptions(ExamType.ICSE)
+        viewModel?.getExamOptions(arguments?.getString(PREV_QUERY_PATH,"") ?: "")
     }
 
     private fun setObservers() {

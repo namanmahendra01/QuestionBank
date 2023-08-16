@@ -1,5 +1,5 @@
 package com.naman.questionbank.base
 
 enum class ExamType {
-    ICSE,CBSE,IAS,IES,BIHAR,KARNATAKA,UP
+    ICSE,CBSE,IAS,IES,BIHAR,KARNATAKA,UP,JEE_M
 }

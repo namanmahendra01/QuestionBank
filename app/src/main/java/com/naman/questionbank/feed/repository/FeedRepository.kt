@@ -1,13 +1,17 @@
 package com.naman.questionbank.feed.repository
 
-import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ValueEventListener
+import com.naman.questionbank.QuestionBankObject
 import com.naman.questionbank.QuestionBankObject.examCategoriesDbRef
+import com.naman.questionbank.QuestionBankObject.paymentDbRef
 import com.naman.questionbank.QuestionBankObject.pdfReference
-import com.naman.questionbank.base.ExamType
+import com.naman.questionbank.QuestionBankObject.userDetails
+import com.naman.questionbank.constants.IS_SUBSCRIBED
+import com.naman.questionbank.constants.TRIAL_COUNT_KEY
+import com.naman.questionbank.payment.UserDetailsModel
 import com.naman.questionbank.ui.snippetData.ExamCategoryCardData
 import com.naman.questionbank.ui.snippetData.PdfItemData
 import com.naman.questionbank.ui.snippetData.SpinnerData
@@ -36,9 +40,9 @@ class FeedRepository {
         this.firebaseValueCallback = examCategoryCardDataListener
     }
 
-    fun getOptionsForExam(examType: ExamType): List<SpinnerData>? {
+    fun getOptionsForExam(examType: String): List<SpinnerData>? {
         val list = examCategoryCardDataList?.find { examCategoryCardData ->
-            examCategoryCardData.id == examType.name
+            examCategoryCardData.id == examType
         }
         return list?.options
     }
@@ -60,5 +64,30 @@ class FeedRepository {
         pdfReference?.downloadUrl?.addOnSuccessListener {
             firebaseValueCallback?.onDownloadUrlFetched(it.toString())
         }
+    }
+
+    fun addPaymentModel(userDetailsModel: UserDetailsModel) {
+        val uuidRef =  paymentDbRef?.child(userDetailsModel.uid.toString())
+        uuidRef?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists().not()) {
+                    uuidRef.setValue(userDetailsModel)
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
+    }
+
+    fun updateTrialCountInFirebaseAndLocal() {
+        val uuidRef = QuestionBankObject.uid?.let { paymentDbRef?.child(it) }
+        userDetails?.trialCount = (userDetails?.trialCount ?: 0) + 1
+        val updatedTrialCount = userDetails?.trialCount
+        uuidRef?.child(TRIAL_COUNT_KEY)?.setValue(updatedTrialCount)
+    }
+
+    fun updateUserPurchase() {
+        val uuidRef = QuestionBankObject.uid?.let { paymentDbRef?.child(it) }
+        uuidRef?.child(IS_SUBSCRIBED)?.setValue(true)
+        userDetails?.isSubscribed = true
     }
 }

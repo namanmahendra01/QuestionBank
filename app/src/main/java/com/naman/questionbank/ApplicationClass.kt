@@ -1,6 +1,7 @@
 package com.naman.questionbank
 
 import android.app.Application
+import android.util.Log
 import com.downloader.PRDownloader
 import com.google.firebase.FirebaseApp
 
@@ -11,5 +12,6 @@ class ApplicationClass : Application() {
         FirebaseApp.initializeApp(applicationContext)
         PRDownloader.initialize(applicationContext)
         QuestionBankObject.applicationContext = this
+        QuestionBankObject.getUid()
     }
 }

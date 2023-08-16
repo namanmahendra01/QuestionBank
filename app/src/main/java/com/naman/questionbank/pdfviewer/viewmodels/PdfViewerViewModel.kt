@@ -3,15 +3,8 @@ package com.naman.questionbank.pdfviewer.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.naman.questionbank.QuestionBankObject
-import com.naman.questionbank.base.ActionType
-import com.naman.questionbank.base.Envelope
 import com.naman.questionbank.feed.repository.FeedRepository
 import com.naman.questionbank.feed.repository.IFirebaseValueCallback
-import com.naman.questionbank.ui.snippetData.PdfItemData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class PdfViewerViewModel : ViewModel(),IFirebaseValueCallback {
 
@@ -32,5 +25,13 @@ class PdfViewerViewModel : ViewModel(),IFirebaseValueCallback {
 
     override fun onDownloadUrlFetched(url: String) {
         _pdfUrl.postValue(url)
+    }
+
+    fun updateTrialCount() {
+        repository.updateTrialCountInFirebaseAndLocal()
+    }
+
+    fun updatePurchase() {
+        repository.updateUserPurchase()
     }
 }

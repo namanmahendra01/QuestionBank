@@ -14,7 +14,7 @@ class OptionsViewModel : ViewModel() {
 
     private val repository: FeedRepository = FeedRepository()
 
-    fun getExamOptions(examType: ExamType) {
+    fun getExamOptions(examType: String) {
         _optionsList.postValue(repository.getOptionsForExam(examType))
     }
 }
