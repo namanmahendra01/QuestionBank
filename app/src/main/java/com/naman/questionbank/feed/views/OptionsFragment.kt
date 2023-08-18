@@ -1,26 +1,23 @@
 package com.naman.questionbank.feed.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Spinner
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.core.view.forEach
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.naman.questionbank.base.ExamType
 import com.naman.questionbank.base.fragment.ViewBindingFragment
 import com.naman.questionbank.constants.PREV_QUERY_PATH
-import com.naman.questionbank.constants.QUERY_PATH
 import com.naman.questionbank.databinding.FragmentOptionSelectionBinding
 import com.naman.questionbank.feed.adapters.OptionsAdapter
 import com.naman.questionbank.feed.viewmodels.OptionsViewModel
 import com.naman.questionbank.ui.QuestionBankInteractions
 import com.naman.questionbank.ui.snippets.SpinnerSnippet
+
 
 class OptionsFragment : ViewBindingFragment<FragmentOptionSelectionBinding>(){
 

@@ -1,7 +1,10 @@
 package com.naman.questionbank
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.provider.Settings
-import android.util.Log
+import com.downloader.PRDownloader
+import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -25,7 +28,7 @@ object QuestionBankObject {
     private var storage: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
     private var firebaseDb: FirebaseDatabase? = null
-    var applicationContext: ApplicationClass? = null
+    var applicationContext: Context? = null
     var examCategoriesDbRef: DatabaseReference? = null
     var paymentDbRef: DatabaseReference? = null
     var userDetails: UserDetailsModel? = null
@@ -38,9 +41,22 @@ object QuestionBankObject {
     var pdfReference: StorageReference? = null
 
 
-    init {
-        initFirebase()
-        getFirebaseChildReference()
+    fun initialize(applicationContext: Context) {
+        this.applicationContext = applicationContext
+        getUid()
+        initFirebaseDependents()
+        PRDownloader.initialize(applicationContext)
+
+    }
+
+    private fun initFirebaseDependents() {
+        applicationContext?.let {
+            FirebaseApp.initializeApp(it)
+            initFirebase()
+            getFirebaseChildReference()
+            getUserDetails()
+
+        }
     }
 
     private fun getUserDetails() {
@@ -51,13 +67,17 @@ object QuestionBankObject {
                     userDetails = dataSnapshot.getValue(UserDetailsModel::class.java)
                 }
             }
+
             override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
 
-    fun getUid() {
-        uid= Settings.Secure.getString(applicationContext?.contentResolver, Settings.Secure.ANDROID_ID)
-        getUserDetails()
+    @SuppressLint("HardwareIds")
+    private fun getUid() {
+        uid = Settings.Secure.getString(
+            applicationContext?.contentResolver,
+            Settings.Secure.ANDROID_ID
+        )
     }
 
     private fun getFirebaseChildReference() {
@@ -75,7 +95,7 @@ object QuestionBankObject {
     fun emitCloseProgressBarEvent() {
         CoroutineScope(Dispatchers.Default).launch {
             actionPerformerSharedFlow.emit(
-                Envelope(ActionType.CLOSE_PROGRESS_BAR,true)
+                Envelope(ActionType.CLOSE_PROGRESS_BAR, true)
             )
         }
     }

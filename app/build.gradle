@@ -12,8 +12,8 @@ android {
         applicationId "com.naman.questionbank"
         minSdk 23
         targetSdk 33
-        versionCode 20000
-        versionName "20.00.0"
+        versionCode 20001
+        versionName "20.00.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,9 +21,18 @@ android {
     buildFeatures {
         viewBinding true
     }
+    signingConfigs {
+        release {
+            storeFile file('/Users/namanmahendra/Desktop/Exmas/keys/QBkey.jks')
+            storePassword 'Naman@123'
+            keyAlias 'key1'
+            keyPassword 'Naman@111'
+        }
+    }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -66,4 +75,7 @@ dependencies {
 
     //Razorpay
     implementation 'com.razorpay:checkout:1.6.26'
+
+    implementation "com.android.billingclient:billing:6.0.1"
+
 }

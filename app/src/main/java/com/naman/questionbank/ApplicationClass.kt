@@ -9,9 +9,6 @@ class ApplicationClass : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        FirebaseApp.initializeApp(applicationContext)
-        PRDownloader.initialize(applicationContext)
-        QuestionBankObject.applicationContext = this
-        QuestionBankObject.getUid()
+        QuestionBankObject.initialize(this)
     }
 }

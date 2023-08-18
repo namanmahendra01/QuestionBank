@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Required to maintain app compatibility. -->
+    <uses-permission android:name="com.android.vending.BILLING"/>
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -19,20 +20,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuestionBank"
-        tools:targetApi="33" >
+        tools:targetApi="33">
+        <activity
+            android:name=".BillingActivity"
+            android:exported="false" />
         <activity
             android:name=".pdfviewer.views.PdfActivity"
             android:exported="false" />
         <activity
             android:name=".payment.PaymentActivity"
             android:exported="false" />
+
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_Jn6hA1NhGJIWp4" />
 
         <activity
             android:name=".feed.views.FeedActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
